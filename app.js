@@ -1,11 +1,12 @@
 
 let amigos = []
-document.getElementById('listaAmigos').innerHTML = ''
+let lista = document.getElementById('listaAmigos')
+let resultado = document.getElementById('resultado')
 
 function adicionarAmigo() {
 
     let amigo = document.getElementById('amigo')
-    document.getElementById('resultado').innerHTML = ''
+    resultado.innerHTML = ''
         
     if (!amigo.value)
         return alert('Por favor, insira um nome.')
@@ -18,12 +19,8 @@ function adicionarAmigo() {
 
 function listarAmigos(amigos) {
 
-    let lista = document.getElementById('listaAmigos')
     let nomes = ''
-
-    for (let amigo of amigos)
-        nomes += `<li>${amigo}<li>`
-
+    amigos.forEach(amigo => nomes += `<li>${amigo}<li>`)
     lista.innerHTML = nomes
 }
 
@@ -34,7 +31,7 @@ function sortearAmigo(){
 
     let amigoSorteado = Math.floor((Math.random() * amigos.length))
 
-    document.getElementById('listaAmigos').innerHTML = ''
-    document.getElementById('resultado').innerHTML = `O amigo secreto sorteado é: ${amigos[amigoSorteado]}`
+    lista.innerHTML = ''
+    resultado.innerHTML = `O amigo secreto sorteado é: ${amigos[amigoSorteado]}`
     amigos = []
 }
